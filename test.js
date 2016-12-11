@@ -43,7 +43,7 @@ test('should work if module not have package.json (resolves index.js)', () => {
   return resolvePackage('foobar-quxie').then((fp) => {
     test.strictEqual(typeof fp === 'string', true)
     test.strictEqual(fp.endsWith('index.js'), true)
-    const res = require(fp)
+    const res = require(fp) // eslint-disable-line global-require
     test.strictEqual(res.foo, 123)
     rimraf.sync('./node_modules/foobar-quxie')
   })
@@ -58,7 +58,7 @@ test('prefer opts.mainFile instead of index.js, if package.json not exist', () =
     mainFile: 'custom.js'
   }).then((fp) => {
     test.strictEqual(typeof fp === 'string', true)
-    const abc = require(fp)
+    const abc = require(fp) // eslint-disable-line global-require
     test.strictEqual(abc(100), 223)
     rimraf.sync('./node_modules/abc-fn')
   })
@@ -72,7 +72,7 @@ test('prefer opts.mainFile even if package.json exists and has main field', () =
   fs.writeFileSync('./node_modules/barry/package.json', pkgJson)
 
   return resolvePackage('barry', { mainFile: 'bar.js' }).then((fpath) => {
-    const barryMain = require(fpath)
+    const barryMain = require(fpath) // eslint-disable-line global-require
     test.strictEqual(barryMain, 333)
     rimraf.sync('./node_modules/barry')
   })
@@ -87,21 +87,21 @@ test('prefer opts.mainField even if package.json exists and has main field', () 
     mainField: 'custom'
   }).then((filepath) => {
     test.strictEqual(typeof filepath === 'string', true)
-    const actual = require(filepath)
+    const actual = require(filepath) // eslint-disable-line global-require
     test.strictEqual(actual, 555)
     rimraf.sync('./node_modules/xyz-fab')
   })
 })
 
 test("prefer package.json's `main` field if no opts.mainFile and no opts.mainField", () => {
-  mkdirp.sync('./node_modules/pappy')
-  fs.writeFileSync('./node_modules/pappy/qux.js', 'module.exports = 777')
-  fs.writeFileSync('./node_modules/pappy/package.json', pkgJson)
+  mkdirp.sync('./node_modules/megacool')
+  fs.writeFileSync('./node_modules/megacool/qux.js', 'module.exports = 777')
+  fs.writeFileSync('./node_modules/megacool/package.json', pkgJson)
 
-  return resolvePackage('pappy').then((filepath) => {
-    const mod = require(filepath)
-    test.strictEqual(mod, 777)
-    rimraf.sync('./node_modules/pappy')
+  const promise = resolvePackage('megacool')
+  return promise.then((filepath) => {
+    test.strictEqual(require(filepath), 777) // eslint-disable-line global-require
+    rimraf.sync('./node_modules/megacool')
   })
 })
 
