@@ -29,7 +29,7 @@ const tryLoad = (opts, resolve) => (fp) => {
         fp = path.resolve(fp, pkg[opts.mainField])
         return resolve(fp)
       }
-      resolve(path.resolve(fp, pkg.main))
+      resolve(path.resolve(fp, pkg.main || ''))
     },
     (e) => {
       const index = typeof opts.mainFile === 'string'

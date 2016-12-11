@@ -104,3 +104,15 @@ test("prefer package.json's `main` field if no opts.mainFile and no opts.mainFie
     rimraf.sync('./node_modules/pappy')
   })
 })
+
+test('resolves to package directory as last resort when no main field in package.json', () => {
+  mkdirp.sync('./node_modules/boombam')
+  fs.writeFileSync('./node_modules/boombam/package.json', `{
+    "name": "boombam"
+  }`)
+
+  return resolvePackage('boombam').then((fp) => {
+    test.strictEqual(fp.endsWith('/node_modules/boombam'), true)
+    rimraf.sync('./node_modules/boombam')
+  })
+})
