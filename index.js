@@ -33,8 +33,8 @@ const tryLoad = (opts, resolve) => (fp) => {
     },
     (e) => {
       const index = typeof opts.mainFile === 'string'
-      ? opts.mainFile
-      : 'index.js'
+        ? opts.mainFile
+        : 'index.js'
       resolve(path.resolve(fp, index))
     }
   )
