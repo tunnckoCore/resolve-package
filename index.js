@@ -22,10 +22,20 @@ const readPackage = (fp) => new Promise((resolve, reject) => {
 const tryLoad = (opts, resolve) => (fp) => {
   readPackage(fp).then(
     (pkg) => {
-      resolve(path.resolve(fp, opts.mainField ? pkg[opts.mainField] : pkg.main))
+      if (typeof opts.mainFile === 'string') {
+        return resolve(path.resolve(fp, opts.mainFile))
+      }
+      if (typeof opts.mainField === 'string') {
+        fp = path.resolve(fp, pkg[opts.mainField])
+        return resolve(fp)
+      }
+      resolve(path.resolve(fp, pkg.main))
     },
     (e) => {
-      resolve(path.resolve(fp, opts.indexFile || 'index.js'))
+      const index = typeof opts.mainFile === 'string'
+      ? opts.mainFile
+      : 'index.js'
+      resolve(path.resolve(fp, index))
     }
   )
 }
