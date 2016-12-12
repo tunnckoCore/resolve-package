@@ -112,7 +112,8 @@ test('resolves to package directory as last resort when no main field in package
   }`)
 
   return resolvePackage('boombam').then((fp) => {
-    test.strictEqual(fp.endsWith('/node_modules/boombam'), true)
+    test.strictEqual(/node_modules/.test(fp), true)
+    test.strictEqual(fp.endsWith('boombam'), true)
     rimraf.sync('./node_modules/boombam')
   })
 })
