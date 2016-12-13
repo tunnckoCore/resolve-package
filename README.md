@@ -41,6 +41,8 @@ The [resolve-pkg][] does not do that thing, [resolve-module][] too, [resolve][] 
 
 I built these 3-4 packages before ~2 years. I'm talking for [detect-installed][], [get-installed-path][] and [is-installed][]. They was not finished totally until now and there was few bugs.
 
+**Just to be clear:** this package returns you a full absolute path to given package - the main export (the entry point or whatever you calling it) to the given package. Actual path that you can directly `require` in later step, that's all about.
+
 ### Resolution
 So how we resolve given package?
 
@@ -177,6 +179,8 @@ _Project scaffolded using [charlike][] cli._
 [dezalgo]: https://github.com/npm/dezalgo
 [generate]: https://github.com/generate/generate
 [get-installed-path]: https://github.com/tunnckocore/get-installed-path
+[global-modules]: https://github.com/jonschlinkert/global-modules
+[global-prefix]: https://github.com/jonschlinkert/global-prefix
 [gulp]: http://gulpjs.com
 [is-installed]: https://github.com/tunnckoCore/is-installed
 [once]: https://github.com/isaacs/once
@@ -209,5 +213,3 @@ _Project scaffolded using [charlike][] cli._
 [standard-url]: https://github.com/feross/standard
 [standard-img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 
-[global-modules]: https://github.com/jonschlinkert/global-modules
-[global-prefix]: https://github.com/jonschlinkert/global-prefix
