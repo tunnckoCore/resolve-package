@@ -1,6 +1,6 @@
 {
   "name": "resolve-package",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Resolves a given package if it is installed locally, then tries to resolve it from global. Better approach than require.resolve",
   "repository": "tunnckoCore/resolve-package",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
