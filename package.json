@@ -21,7 +21,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "get-installed-path": "^2.0.2"
+    "get-installed-path": "^2.0.3"
   },
   "devDependencies": {
     "commitizen": "^2.8.6",
@@ -30,7 +30,7 @@
     "mkdirp": "^0.5.1",
     "mukla": "^0.4.8",
     "nyc": "^10.0.0",
-    "pre-commit": "^1.2.0",
+    "pre-commit": "^1.2.2",
     "rimraf": "^2.5.4",
     "standard": "^8.6.0",
     "standard-version": "^4.0.0"
