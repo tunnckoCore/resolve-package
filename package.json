@@ -93,11 +93,22 @@
       "base",
       "charlike",
       "commitizen",
+      "detect-installed",
       "dezalgo",
+      "generate",
+      "get-installed-path",
+      "gulp",
+      "is-installed",
       "once",
+      "resolve",
+      "resolve-from",
+      "resolve-module",
+      "resolve-pkg",
       "standard-version",
       "verb",
-      "verb-generate-readme"
+      "verb-generate-readme",
+      "global-modules",
+      "global-prefix"
     ]
   },
   "engines": {
