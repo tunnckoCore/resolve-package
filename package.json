@@ -38,6 +38,9 @@
   "files": [
     "index.js"
   ],
+  "renovate": {
+    "extends": "tunnckocore"
+  },
   "keywords": [
     "file",
     "filepath",
