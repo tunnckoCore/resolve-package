@@ -21,7 +21,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "get-installed-path": "^2.0.3"
+    "get-installed-path": "^4.0.0"
   },
   "devDependencies": {
     "commitizen": "^2.8.6",
